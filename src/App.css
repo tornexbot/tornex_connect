@@ -1,0 +1,352 @@
+/* Base Styles */
+:root {
+    --primary: #6e45ff;
+    --secondary: #14f195;
+    --error: #ff6b6b;
+    --dark: #121218;
+    --darker: #0a0a0e;
+    --light: #ffffff;
+    --light-dim: rgba(255, 255, 255, 0.8);
+    --card-bg: #1e1e2a;
+    --border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+  
+  body {
+    background-color: var(--dark);
+    color: var(--light);
+  }
+  
+  /* Layout */
+  .app-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .content-wrapper {
+    width: 100%;
+    max-width: 480px;
+  }
+  
+  /* Header */
+  .app-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .app-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .app-header p {
+    color: var(--light-dim);
+  }
+  
+  /* Connection Panel */
+  .connection-panel {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+  }
+  
+  /* Buttons */
+  .connect-button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: background 0.2s ease;
+  }
+  
+  .connect-button:hover:not(:disabled) {
+    background: #5d38e6;
+  }
+  
+  .connect-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .disconnect-button {
+    background: transparent;
+    color: var(--error);
+    border: 1px solid var(--error);
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .disconnect-button:hover {
+    background: rgba(255, 107, 107, 0.1);
+  }
+  
+  /* Wallet Card */
+  .wallet-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+  }
+  
+  .wallet-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .wallet-name {
+    font-weight: 500;
+  }
+  
+  .wallet-address {
+    font-size: 0.85rem;
+    color: var(--light-dim);
+  }
+  
+  /* Status Indicator */
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  .status-indicator.connecting {
+    background: rgba(110, 69, 255, 0.1);
+  }
+  
+  .status-indicator.active {
+    background: rgba(20, 241, 149, 0.1);
+  }
+  
+  .status-indicator.error {
+    background: rgba(255, 107, 107, 0.1);
+  }
+  
+  .status-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  .status-dot.active {
+    background: var(--secondary);
+  }
+  
+  .status-dot.error {
+    background: var(--error);
+  }
+  
+  .status-message h3 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .status-message p {
+    font-size: 0.9rem;
+    color: var(--light-dim);
+    margin-top: 0.25rem;
+  }
+  
+  /* Loading Spinner */
+  .loading-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+  }
+  
+  .loading-spinner.small {
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Wallet Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .wallet-modal {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 420px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+  }
+  
+  .modal-header {
+    padding: 1.5rem;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .modal-header h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--light-dim);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .modal-close:hover {
+    color: var(--light);
+  }
+  
+  .wallet-lists {
+    padding: 1.5rem;
+  }
+  
+  .wallet-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .wallet-group h3 {
+    font-size: 1rem;
+    color: var(--light-dim);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .wallet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .wallet-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 0.5rem;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-decoration: none;
+    color: var(--light);
+    border: 1px solid var(--border-color);
+  }
+  
+  .wallet-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .wallet-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 480px) {
+    .app-header h1 {
+      font-size: 1.75rem;
+    }
+  
+    .wallet-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .status-message {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .status-details {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+  }
+  
+  .status-indicator.connecting {
+    border-left: 3px solid #FFA500; /* Orange for pending state */
+  }
+
+  .identicon-img {
+    border-radius: 50%;
+    background: white;
+    padding: 2px;
+  }
+
+  .identicon-img {
+    border-radius: 50%;
+    background: white;
+    padding: 2px;
+    margin-right: 12px;
+  }
+  
+  .wallet-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .wallet-address {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #666;
+  }
